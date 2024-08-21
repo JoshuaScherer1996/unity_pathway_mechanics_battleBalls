@@ -4,4 +4,4 @@ This repository contains the fourth project from the Unity Pathway "Junior Progr
 
 ## Topics covered
 * Textures
-* 
+* Focal point
