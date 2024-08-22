@@ -2,6 +2,7 @@ using UnityEngine;
 
 public class SpawnManager : MonoBehaviour
 {
+    // Declaring and initializing the constants and variables.
     public GameObject enemyPrefab;
     private const float SpawnRange = 9.0f;
     
