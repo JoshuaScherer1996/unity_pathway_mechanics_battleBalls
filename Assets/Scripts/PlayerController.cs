@@ -1,6 +1,4 @@
-using System;
 using System.Collections;
-using Unity.VisualScripting;
 using UnityEngine;
 
 public class PlayerController : MonoBehaviour
@@ -11,6 +9,7 @@ public class PlayerController : MonoBehaviour
     private const float Speed = 5.0f;
     private const float PowerUpStrength = 15.0f;
     public bool hasPowerUp;
+    public GameObject powerUpIndicator;
     
     // Start is called before the first frame update.
     private void Start()
@@ -24,6 +23,7 @@ public class PlayerController : MonoBehaviour
     {
         var forwardInput = Input.GetAxis("Vertical");
         _playerRb.AddForce(_focalPoint.transform.forward * (forwardInput * Speed));
+        powerUpIndicator.transform.position = transform.position;
     }
 
     // Takes the tags of the collided objects and implements the destruction logic. Also starts the coroutine.
@@ -34,6 +34,7 @@ public class PlayerController : MonoBehaviour
             hasPowerUp = true;
             Destroy(other.gameObject);
             StartCoroutine(PowerUpCountdownRoutine());
+            powerUpIndicator.gameObject.SetActive(true);
         }
     }
 
@@ -42,6 +43,7 @@ public class PlayerController : MonoBehaviour
     {
         yield return new WaitForSeconds(7);
         hasPowerUp = false;
+        powerUpIndicator.gameObject.SetActive(false);
     }
     
     // Checks the tags od the collided objects and implements physics logic.

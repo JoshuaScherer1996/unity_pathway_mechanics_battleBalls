@@ -12,7 +12,8 @@ This repository contains the fourth project from the Unity Pathway "Junior Progr
 * Gameplay mechanic power up
 * Coroutines
 * Interfaces
-* IEnumerator 
 * Threads
 * Yield
+* WaitForSeconds method
+* Setting objects inactive in the hierarchy 
 * 
