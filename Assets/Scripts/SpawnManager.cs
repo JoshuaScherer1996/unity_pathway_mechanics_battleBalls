@@ -8,11 +8,12 @@ public class SpawnManager : MonoBehaviour
     public GameObject enemyPrefab;
     private const float SpawnRange = 9.0f;
     public int enemyCount;
+    public int waveNumber = 1;
     
     // Start is called before the first frame update.
     private void Start()
     {
-        SpawnWave(3);
+        SpawnWave(waveNumber);
     }
 
     // Update is called once per frame.
@@ -20,9 +21,12 @@ public class SpawnManager : MonoBehaviour
     {
         // Finds all objects with the Enemy script attached.
         enemyCount = FindObjectsOfType<Enemy>().Length;
+        
+        // Logic to spawn new enemies once all current enemies are destroyed.
         if (enemyCount == 0)
         {
-            SpawnWave(1);
+            waveNumber++;
+            SpawnWave(waveNumber);
         }
     }
 
