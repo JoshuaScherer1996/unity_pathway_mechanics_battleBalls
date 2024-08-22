@@ -11,4 +11,8 @@ This repository contains the fourth project from the Unity Pathway "Junior Progr
 * Return values
 * Gameplay mechanic power up
 * Coroutines
+* Interfaces
+* IEnumerator 
+* Threads
+* Yield
 * 

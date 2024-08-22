@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using Unity.VisualScripting;
 using UnityEngine;
 
@@ -25,16 +26,24 @@ public class PlayerController : MonoBehaviour
         _playerRb.AddForce(_focalPoint.transform.forward * (forwardInput * Speed));
     }
 
-    // Takes the tags of the collided objects and implements the destruction logic.
+    // Takes the tags of the collided objects and implements the destruction logic. Also starts the coroutine.
     private void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("PowerUp"))
         {
             hasPowerUp = true;
             Destroy(other.gameObject);
+            StartCoroutine(PowerUpCountdownRoutine());
         }
     }
 
+    // Coroutine that deactivates the power up after a delay.
+    IEnumerator PowerUpCountdownRoutine()
+    {
+        yield return new WaitForSeconds(7);
+        hasPowerUp = false;
+    }
+    
     // Checks the tags od the collided objects and implements physics logic.
     private void OnCollisionEnter(Collision collision)
     {
