@@ -6,6 +6,7 @@ public class SpawnManager : MonoBehaviour
 {
     // Declaring and initializing the constants and variables.
     public GameObject enemyPrefab;
+    public GameObject powerUpPrefab;
     private const float SpawnRange = 9.0f;
     public int enemyCount;
     public int waveNumber = 1;
@@ -14,6 +15,7 @@ public class SpawnManager : MonoBehaviour
     private void Start()
     {
         SpawnWave(waveNumber);
+        SpawnPowerUp();
     }
 
     // Update is called once per frame.
@@ -22,11 +24,12 @@ public class SpawnManager : MonoBehaviour
         // Finds all objects with the Enemy script attached.
         enemyCount = FindObjectsOfType<Enemy>().Length;
         
-        // Logic to spawn new enemies once all current enemies are destroyed.
+        // Logic to spawn new enemies and power ups once all current enemies are destroyed.
         if (enemyCount == 0)
         {
             waveNumber++;
             SpawnWave(waveNumber);
+            SpawnPowerUp();
         }
     }
 
@@ -42,6 +45,7 @@ public class SpawnManager : MonoBehaviour
         return randomPos;
     }
     
+    // Spawns new enemies.
     private void SpawnWave(int enemiesToSpawn)
     {
         // Loop that iterates as many times as the value of enemiesToSpawn.
@@ -50,5 +54,11 @@ public class SpawnManager : MonoBehaviour
             // Creates the enemy instance.
             Instantiate(enemyPrefab, GenerateSpawnPos(), enemyPrefab.transform.rotation);
         }
+    }
+
+    // Creates new power up instances.
+    private void SpawnPowerUp()
+    {
+        Instantiate(powerUpPrefab, GenerateSpawnPos(), powerUpPrefab.transform.rotation);
     }
 }
