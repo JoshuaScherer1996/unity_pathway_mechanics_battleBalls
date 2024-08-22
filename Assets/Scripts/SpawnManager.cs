@@ -26,7 +26,7 @@ public class SpawnManager : MonoBehaviour
     
     private void SpawnWave(int enemiesToSpawn)
     {
-        // Loop that iterates 3 times.
+        // Loop that iterates as many times as the value of enemiesToSpawn.
         for (var i = 0; i < enemiesToSpawn; i++)
         {
             // Creates the enemy instance.
