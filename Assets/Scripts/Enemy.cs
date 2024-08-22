@@ -22,5 +22,10 @@ public class Enemy : MonoBehaviour
         
         // The applied force is the vector pointing towards the player with normalized magnitude of one.
         _enemyRb.AddForce(lookDirection * speed);
+
+        if (transform.position.y < -10)
+        {
+            Destroy(gameObject);
+        }
     }
 }

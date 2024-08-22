@@ -1,17 +1,31 @@
+using System;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 public class SpawnManager : MonoBehaviour
 {
     // Declaring and initializing the constants and variables.
     public GameObject enemyPrefab;
     private const float SpawnRange = 9.0f;
+    public int enemyCount;
     
     // Start is called before the first frame update.
     private void Start()
     {
         SpawnWave(3);
     }
-    
+
+    // Update is called once per frame.
+    private void Update()
+    {
+        // Finds all objects with the Enemy script attached.
+        enemyCount = FindObjectsOfType<Enemy>().Length;
+        if (enemyCount == 0)
+        {
+            SpawnWave(1);
+        }
+    }
+
     // Handles the spawn position logic.
     private static Vector3 GenerateSpawnPos()
     {
