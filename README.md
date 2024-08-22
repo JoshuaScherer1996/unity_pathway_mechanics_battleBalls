@@ -9,4 +9,6 @@ This repository contains the fourth project from the Unity Pathway "Junior Progr
 * Linear algebra: 3d vectors
 * Normalizing 
 * Return values
+* Gameplay mechanic power up
+* Coroutines
 * 
