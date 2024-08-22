@@ -24,12 +24,22 @@ public class PlayerController : MonoBehaviour
         _playerRb.AddForce(_focalPoint.transform.forward * (forwardInput * Speed));
     }
 
+    // Takes the tags of the collided objects and implements the destruction logic.
     private void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("PowerUp"))
         {
             hasPowerUp = true;
             Destroy(other.gameObject);
+        }
+    }
+
+    // Checks the tags od the collided objects and implements physics logic.
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (collision.gameObject.CompareTag("Enemy") && hasPowerUp)
+        {
+            Debug.Log($"Collided with {collision.gameObject.name} with the power up set to {hasPowerUp}");
         }
     }
 }
