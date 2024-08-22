@@ -6,4 +6,4 @@ This repository contains the fourth project from the Unity Pathway "Junior Progr
 * Textures
 * Focal point
 * Physics materials
-* 
+* Linear algebra: 3d vectors
