@@ -16,4 +16,6 @@ This repository contains the fourth project from the Unity Pathway "Junior Progr
 * Yield
 * WaitForSeconds method
 * Setting objects inactive in the hierarchy 
-* 
+* For loop
+* Increment and decrement
+* Parameters

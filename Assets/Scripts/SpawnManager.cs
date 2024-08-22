@@ -9,8 +9,7 @@ public class SpawnManager : MonoBehaviour
     // Start is called before the first frame update.
     private void Start()
     {
-        // Creates the enemy instance.
-        Instantiate(enemyPrefab, GenerateSpawnPos(), enemyPrefab.transform.rotation);
+        SpawnWave(3);
     }
     
     // Handles the spawn position logic.
@@ -23,5 +22,15 @@ public class SpawnManager : MonoBehaviour
         // Generates a new random vector and returns it.
         var randomPos = new Vector3(spawnRangeX, 0, spawnRangeZ);
         return randomPos;
+    }
+    
+    private void SpawnWave(int enemiesToSpawn)
+    {
+        // Loop that iterates 3 times.
+        for (var i = 0; i < enemiesToSpawn; i++)
+        {
+            // Creates the enemy instance.
+            Instantiate(enemyPrefab, GenerateSpawnPos(), enemyPrefab.transform.rotation);
+        }
     }
 }
